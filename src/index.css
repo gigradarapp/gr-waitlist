@@ -1,3 +1,68 @@
+/* Full-bleed layout: kill default body margin and match page chrome to the app */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #000;
+  font-family: 'DM Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* UA styles use system fonts for controls; inherit so they match body (DM Sans). */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+  background: #000;
+}
+
+@keyframes live-counter-pulse {
+  0%,
+  100% {
+    opacity: 0.38;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}
+
+.live-counter-skeleton-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+  animation: live-counter-pulse 1.1s ease-in-out infinite;
+}
+
+.live-counter-skeleton-num {
+  display: inline-block;
+  width: 3.75rem;
+  height: 0.95em;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  vertical-align: -0.12em;
+  animation: live-counter-pulse 1.1s ease-in-out infinite;
+}
+
 /* latin-ext */
 @font-face {
   font-family: 'Covered By Your Grace';
