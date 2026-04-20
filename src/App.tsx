@@ -45,13 +45,10 @@ export const App = () => {
   const [email, setEmail]         = React.useState('');
   const [error, setError]         = React.useState('');
   const [loading, setLoading]     = React.useState(false);
-  const [city, setCity]           = React.useState(window.__tweakCity || TWEAK_DEFAULTS.city);
-  const [baseCount, setBaseCount] = React.useState(window.__tweakCount || TWEAK_DEFAULTS.startCount);
+  const city = window.__tweakCity ?? TWEAK_DEFAULTS.city
+  const [baseCount] = React.useState(window.__tweakCount ?? TWEAK_DEFAULTS.startCount)
   // Signed-up state
-  const [signedUp, setSignedUp] = React.useState(() => {
-    if (window.__tweakState) return window.__tweakState === 'post';
-    return !!localStorage.getItem('buzo_email');
-  });
+  const [signedUp, setSignedUp] = React.useState(() => !!localStorage.getItem('buzo_email'))
   const [position, setPosition] = React.useState(() => {
     const raw = localStorage.getItem('buzo_position')
     const n = raw ? parseInt(raw, 10) : NaN
@@ -60,19 +57,7 @@ export const App = () => {
   const [refCode, setRefCode] = React.useState(() => {
     return localStorage.getItem('buzo_ref_code') || genCode();
   });
-  const [copied, setCopied] = React.useState(false);
-
-  // Tweak bridges
-  React.useEffect(() => {
-    window.__tweakStateChange = s => setSignedUp(s === 'post');
-    window.__tweakCityChange  = c => setCity(c);
-    window.__tweakCountChange = c => setBaseCount(c);
-    return () => {
-      delete window.__tweakStateChange
-      delete window.__tweakCityChange
-      delete window.__tweakCountChange
-    }
-  }, []);
+  const [copied, setCopied] = React.useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
