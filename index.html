@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>buzo — Discover Tonight</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <div id="tweaks-panel">
+      <div id="tweaks-title">
+        Tweaks <span id="tweaks-close" style="cursor: pointer; color: #555; font-size: 18px">×</span>
+      </div>
+      <div class="tweak-row">
+        <span class="tweak-label">City</span>
+        <select class="tweak-select" id="tweak-city">
+          <option value="Singapore">Singapore</option>
+          <option value="Bangkok">Bangkok</option>
+          <option value="Jakarta">Jakarta</option>
+          <option value="Kuala Lumpur">Kuala Lumpur</option>
+        </select>
+      </div>
+      <div class="tweak-row">
+        <span class="tweak-label">Waitlist start count</span>
+        <input class="tweak-input" id="tweak-count" type="number" value="1247" />
+      </div>
+      <div class="tweak-row">
+        <span class="tweak-label">State</span>
+        <div class="tweak-toggle">
+          <button type="button" class="tweak-btn active" id="btn-pre" onclick="setTweakState('pre')">
+            Pre-signup
+          </button>
+          <button type="button" class="tweak-btn" id="btn-post" onclick="setTweakState('post')">
+            Post-signup
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
