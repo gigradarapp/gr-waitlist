@@ -1,5 +1,5 @@
-/** Default landing copy (city label + waitlist counter seed). */
-export const TWEAK_DEFAULTS = { city: 'Singapore', startCount: 1247 } as const
+export { TWEAK_DEFAULTS } from './config/landing'
+import { TWEAK_DEFAULTS } from './config/landing'
 
 window.__tweakCity = TWEAK_DEFAULTS.city
 window.__tweakCount = TWEAK_DEFAULTS.startCount

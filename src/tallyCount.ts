@@ -1,4 +1,5 @@
 /** GET /forms/{id}/submissions — uses totals in the response body (limit=1 keeps payload small). */
+import { TALLY_SUBMISSIONS_LIST_LIMIT } from './config/tally'
 
 type TallyListResponse = {
   totalNumberOfSubmissionsPerFilter?: {
@@ -12,7 +13,7 @@ export async function fetchTallyCompletedCount(formId: string, apiKey: string): 
   const key = apiKey.trim()
   if (!formId || !key) return null
 
-  const url = `https://api.tally.so/forms/${encodeURIComponent(formId)}/submissions?limit=1`
+  const url = `https://api.tally.so/forms/${encodeURIComponent(formId)}/submissions?limit=${TALLY_SUBMISSIONS_LIST_LIMIT}`
   const res = await fetch(url, {
     headers: {
       Authorization: `Bearer ${key}`,
