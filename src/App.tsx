@@ -10,17 +10,13 @@ const O = '#E24325'
 type LiveCounterProps = { fallbackCount: number; city: string }
 
 const LiveCounter = ({ fallbackCount, city }: LiveCounterProps) => {
-  const hasApiKey = Boolean(import.meta.env.VITE_TALLY_API_KEY?.trim())
-  const [count, setCount] = React.useState<number | null>(hasApiKey ? null : fallbackCount)
+  const [count, setCount] = React.useState<number | null>(null)
   const [fromTally, setFromTally] = React.useState(false)
 
   React.useEffect(() => {
-    if (!hasApiKey) return
-
     let cancelled = false
     ;(async () => {
-      const apiKey = import.meta.env.VITE_TALLY_API_KEY!
-      const n = await fetchTallyCompletedCount(TALLY_FORM_ID, apiKey)
+      const n = await fetchTallyCompletedCount(TALLY_FORM_ID)
       if (cancelled) return
       if (n !== null) {
         setCount(n)
@@ -34,7 +30,7 @@ const LiveCounter = ({ fallbackCount, city }: LiveCounterProps) => {
     return () => {
       cancelled = true
     }
-  }, [hasApiKey, fallbackCount])
+  }, [fallbackCount])
 
   const loading = count === null
 

@@ -1,32 +1,23 @@
 /** GET /forms/{id}/submissions — uses totals in the response body (limit=1 keeps payload small). */
-import { TALLY_SUBMISSIONS_LIST_LIMIT } from './config/tally'
-
-type TallyListResponse = {
-  totalNumberOfSubmissionsPerFilter?: {
-    all?: number
-    completed?: number
-    partial?: number
-  }
+type TallyCountApiResponse = {
+  count?: number | null
 }
 
-export async function fetchTallyCompletedCount(formId: string, apiKey: string): Promise<number | null> {
-  const key = apiKey.trim()
-  if (!formId || !key) return null
+export async function fetchTallyCompletedCount(formId: string): Promise<number | null> {
+  const id = formId.trim()
+  if (!id) return null
 
-  const url = `https://api.tally.so/forms/${encodeURIComponent(formId)}/submissions?limit=${TALLY_SUBMISSIONS_LIST_LIMIT}`
+  const url = `/api/tally-count?formId=${encodeURIComponent(id)}`
   const res = await fetch(url, {
     headers: {
-      Authorization: `Bearer ${key}`,
       Accept: 'application/json',
     },
   })
 
+  if (res.status === 204) return null
   if (!res.ok) return null
 
-  const data = (await res.json()) as TallyListResponse
-  const t = data.totalNumberOfSubmissionsPerFilter
-  if (!t) return null
-  if (typeof t.completed === 'number') return t.completed
-  if (typeof t.all === 'number') return t.all
+  const data = (await res.json()) as TallyCountApiResponse
+  if (typeof data.count === 'number') return data.count
   return null
 }
