@@ -28,8 +28,8 @@ This repo exists to show early go-to-market motion beside the main product. The 
 | Surface | URL |
 | --- | --- |
 | Waitlist | `https://gr-waitlist.vercel.app/` |
-| Hosted app | `https://gr-frontend-dev.vercel.app/` |
-| Hosted API health | `https://gr-backend-dev.gigradar.workers.dev/health` |
+| Hosted app | `https://getbuzo.vercel.app/` |
+| Hosted API health | `https://buzo-be-dev.buzo.workers.dev/health` |
 
 ## What To Review First
 
