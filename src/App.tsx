@@ -78,7 +78,7 @@ export const App = () => {
 
       {/* ── NAV ── */}
       <nav style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100, padding: '20px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%)' }}>
-        <img src="/logo-wordmark.png" alt="buzo" style={{ filter: 'invert(1)', height: 32, width: 'auto' }} />
+        <img src="/buzo-logo-white.png" alt="buzo" style={{ height: 42, width: 'auto' }} />
         <button
           type="button"
           onClick={() => document.getElementById('cta')?.scrollIntoView({ block: 'center' })}
@@ -197,7 +197,7 @@ export const App = () => {
       </section>
 
       <footer style={{ borderTop: '1px solid rgba(255,255,255,0.06)', padding: '24px 40px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-        <img src="/logo-wordmark.png" alt="buzo" style={{ filter: 'invert(1)', height: 22, width: 'auto', opacity: 0.5 }} />
+        <img src="/buzo-logo-white.png" alt="buzo" style={{ height: 28, width: 'auto', opacity: 0.5 }} />
         <div style={{ fontSize: 12, color: '#555' }}>
           © 2026 buzo. Singapore.
         </div>
